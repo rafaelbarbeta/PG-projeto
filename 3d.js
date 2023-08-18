@@ -82,11 +82,49 @@ const rightEye = leftEye.clone();
 leftEye.position.set(-0.3, 1.4, 0.6);
 rightEye.position.set(0.3, 1.4, 0.6);
 duckGroup.add(leftEye, rightEye);
-
 // Adiciona os objetos à cena
 scene.add(duckGroup);
 duckGroup.scale.multiplyScalar(5);
 duckGroup.position.set(0, 2, -20);
+
+/* BANHEIRA */
+const banheira = new THREE.Group();
+
+//base da banheira
+var radius = 5;
+var radialSegments = 32;
+var materialFora = new THREE.MeshBasicMaterial({
+  color: 0x808080
+});
+var materialDentro = new THREE.MeshBasicMaterial({
+  color: 0x0000FF
+});
+var hemiSphereGeom = new THREE.SphereBufferGeometry(radius, radialSegments, Math.round(radialSegments / 4), 0, Math.PI * 2, 0, Math.PI * 0.5);
+var hemiSphere = new THREE.Mesh(hemiSphereGeom, materialFora);
+var capGeom = new THREE.CircleBufferGeometry(radius, radialSegments);
+capGeom.rotateX(Math.PI * 0.5);
+var cap = new THREE.Mesh(capGeom, materialDentro);
+hemiSphere.add(cap);
+hemiSphere.rotateX(Math.PI);
+hemiSphere.scale.x = 1.5;
+
+
+//apoios da banheira (pezinho)
+
+
+
+//borda
+
+
+
+//adiciona objetos na cena
+banheira.add(hemiSphere);
+scene.add(banheira);
+banheira.scale.multiplyScalar(5);
+banheira.position.set(50, 10, -20);
+/* FIM BANHEIRA */
+
+
 
 // anima a cena
 const animate = () => {
