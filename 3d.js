@@ -38,6 +38,7 @@ const floor = new THREE.Mesh(floorGeometry, floorMaterial);
 floor.rotation.x = Math.PI / -2; // Rotação para posicionar horizontalmente
 scene.add(floor);
 
+
 // Cria um grupo para o patinho e define suas partes
 const duckGroup = new THREE.Group();
 // Corpo do patinho. Ele é alongado no eixo z
@@ -123,6 +124,94 @@ scene.add(banheira);
 banheira.scale.multiplyScalar(5);
 banheira.position.set(50, 10, -20);
 /* FIM BANHEIRA */
+
+
+
+/*CHUVEIRO*/
+// Cria um grupo para o chuveiro
+const chuveiroGroup = new THREE.Group();
+
+// Cria a geometria do cano reto
+class TuboReto extends THREE.Curve {
+  constructor(scale = 1) {
+    super();
+    this.scale = scale;
+  }
+
+  getPoint(t) {
+    const tx = 0; // Coordenada x constante (coloca o cano na vertical)
+    const ty = t; // Coordenada y linear
+    const tz = -t; // Coordenada z decrescente para ir em direção à borda da banheira
+
+    return new THREE.Vector3(tx * this.scale, ty * this.scale, tz * this.scale);
+  }
+}
+
+// Cria uma instância da nova curva de cano reto
+const tuboRetoCurve = new TuboReto(2); // Aumenta o tamanho do cano
+
+// Cria a geometria do cano reto
+const tuboRetoGeometry = new THREE.TubeGeometry(tuboRetoCurve, 64, 0.04, 16, false);
+const tuboRetoMaterial = new THREE.MeshStandardMaterial({
+  color: 0xaaaaaa,
+  metalness: 0.8,
+  roughness: 0.4,
+});
+const tuboReto = new THREE.Mesh(tuboRetoGeometry, tuboRetoMaterial);
+chuveiroGroup.add(tuboReto);
+
+// Cabeça do chuveiro (cúpula)
+const cabecaGeometry = new THREE.CylinderGeometry(0.2, 0.3, 0.6, 16);
+const cabecaMaterial = new THREE.MeshStandardMaterial({ color: 0xd3d3d3 });
+const cabecaChuveiro = new THREE.Mesh(cabecaGeometry, cabecaMaterial);
+cabecaChuveiro.position.copy(tuboRetoCurve.getPoint(1)); // Posiciona a cabeça do chuveiro na ponta do cano reto
+chuveiroGroup.add(cabecaChuveiro);
+
+// Posiciona o cano reto saindo da cabeça do chuveiro até a borda da banheira
+const startPoint = tuboRetoCurve.getPoint(0); // Ponto inicial da curva
+const endPoint = tuboRetoCurve.getPoint(1);   // Ponto final da curva
+
+// Ajusta a posição do cano reto
+tuboReto.position.copy(startPoint); // Posiciona o cano reto na cabeça do chuveiro
+
+// Configuração da iluminação
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+directionalLight.position.set(0, 1, 0);
+scene.add(directionalLight);
+
+// Criação do jato de água 
+const jatoGeometry = new THREE.CylinderGeometry(0.04, 0.06, 0.5, 8); // Aumente os valores do raio (primeiro e segundo parâmetros)
+const jatoMaterial = new THREE.MeshBasicMaterial({
+  color: 0x0000FF,
+  transparent: true,
+  opacity: 0.8
+});
+const jatoAgua = new THREE.Mesh(jatoGeometry, jatoMaterial);
+
+// Posicionamento do jato de água
+jatoAgua.position.copy(cabecaChuveiro.position);
+jatoAgua.position.y -= cabecaGeometry.parameters.height / 2 + 0.25;
+chuveiroGroup.add(jatoAgua);
+
+// Posiciona o chuveiro na borda da banheira
+const chuveiroX = 50 + radius * Math.cos(Math.PI * 0.25); // Calcula a posição x usando um ângulo de 45 graus
+const chuveiroY = 10 + radius + 0.1; // Coordenada y acima da borda da banheira
+const chuveiroZ = -20; // Mesma coordenada z da banheira
+chuveiroGroup.position.set(chuveiroX, chuveiroY, chuveiroZ);
+
+// Escala do chuveiro
+const chuveiroEscala = 8; // Aumenta a escala do chuveiro
+chuveiroGroup.scale.set(chuveiroEscala, chuveiroEscala, chuveiroEscala);
+
+// Adiciona o chuveiro à cena
+scene.add(chuveiroGroup);
+/*FIM DO CHUVEIRO*/
+
+
+
 
 
 
