@@ -115,10 +115,20 @@ hemiSphere.scale.x = 1.5;
 
 
 //borda
-
+var borderRadius = 5.3; // Raio da borda é ligeiramente maior que o raio da base
+var borderHeight = 0.3; // Altura da borda
+var borderSegments = 32;
+var borderMaterial = new THREE.MeshBasicMaterial({
+  color: 0x808080 // Cor preta para a borda
+});
+var borderGeom = new THREE.CylinderBufferGeometry(borderRadius, borderRadius, borderHeight, borderSegments);
+var border = new THREE.Mesh(borderGeom, borderMaterial);
+border.position.set(0, (-borderHeight / 2)-0.01, 0); // Posicione a borda abaixo da base da banheira
+border.scale.x = 1.5;
 
 
 //adiciona objetos na cena
+banheira.add(border);
 banheira.add(hemiSphere);
 scene.add(banheira);
 banheira.scale.multiplyScalar(5);
