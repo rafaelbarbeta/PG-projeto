@@ -244,10 +244,21 @@ const shampooGroup = new THREE.Group();
 
 //cria tampa do shampoo
 const geometryTampa = new THREE.CylinderGeometry( 1, 1, 2, 32 ); 
-const materialTampa = new THREE.MeshBasicMaterial( {color: 0x7B68EE} ); 
+const materialTampa = new THREE.MeshBasicMaterial( {color: 0xDAA520} ); 
 const tampa = new THREE.Mesh(geometryTampa, materialTampa);
 tampa.position.set(0,10,0);
 shampooGroup.add(tampa);
+
+
+//cria corpo do shampoo
+const geometryShampoo = new THREE.CylinderGeometry(2,2,10,32);
+const materialShampoo = new THREE.MeshBasicMaterial( {color: 0xBA55D3} );
+const corpoShampoo = new  THREE.Mesh(geometryShampoo, materialShampoo);
+corpoShampoo.position.set(0,4,0);
+shampooGroup.add(corpoShampoo);
+
+
+//add shampoo na cena
 scene.add(shampooGroup);
 
 /*FIM DO SHAMPOO*/
