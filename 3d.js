@@ -257,6 +257,8 @@ const corpoShampoo = new  THREE.Mesh(geometryShampoo, materialShampoo);
 corpoShampoo.position.set(0,4,0);
 shampooGroup.add(corpoShampoo);
 
+//muda posicao do shampoo
+shampooGroup.position.set(5,0,10);
 
 //add shampoo na cena
 scene.add(shampooGroup);
