@@ -238,7 +238,19 @@ scene.add(chuveiroGroup);
 /*FIM DO CHUVEIRO*/
 
 
+/*SHAMPOO*/
+//cria grupo para o chuveiro
+const shampooGroup = new THREE.Group();
 
+//cria tampa do shampoo
+const geometryTampa = new THREE.CylinderGeometry( 1, 1, 2, 32 ); 
+const materialTampa = new THREE.MeshBasicMaterial( {color: 0x7B68EE} ); 
+const tampa = new THREE.Mesh(geometryTampa, materialTampa);
+tampa.position.set(0,10,0);
+shampooGroup.add(tampa);
+scene.add(shampooGroup);
+
+/*FIM DO SHAMPOO*/
 
 
 
