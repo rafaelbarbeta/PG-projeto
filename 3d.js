@@ -197,7 +197,7 @@ directionalLight.position.set(0, 1, 0);
 scene.add(directionalLight);
 
 // Criação do jato de água 
-const jatoGeometry = new THREE.CylinderGeometry(0, 0.10, 0.8, 8); 
+const jatoGeometry = new THREE.CylinderGeometry(0, 0.16, 0.5, 5); 
 const jatoMaterial = new THREE.MeshBasicMaterial({
   color: 0x66ccff,
   transparent: true,
@@ -206,7 +206,7 @@ const jatoMaterial = new THREE.MeshBasicMaterial({
 const jatoAgua = new THREE.Mesh(jatoGeometry, jatoMaterial);
 
 // Criação do jato de água 
-const jatoGeometry1 = new THREE.CylinderGeometry(0, 0.10, 0.8, 8); 
+const jatoGeometry1 = new THREE.CylinderGeometry(0, 0.10, 0.5, 5); 
 const jatoMaterial1 = new THREE.MeshBasicMaterial({
   color: 0x66ccff,
   transparent: true,
@@ -237,6 +237,31 @@ chuveiroGroup.rotation.y = Math.PI / 15;
 // Escala do chuveiro
 const chuveiroEscala = 8; // Aumenta a escala do chuveiro
 chuveiroGroup.scale.set(chuveiroEscala, chuveiroEscala, chuveiroEscala);
+
+// Função para animar o movimento do jato de água
+function animateWaterJet() {
+  // Define a amplitude e a velocidade da oscilação
+  const amplitude = -0.5;
+  const speed = 1;
+
+  // Calcula o deslocamento vertical com base no tempo
+  const displacement = amplitude * Math.sin(speed * Date.now() * 0.001);
+
+  //  o movimento começa de cima e caia para baixo
+  const invertedDisplacement = -displacement;
+
+  // Atualiza a posição do jato de água
+  jatoAgua.position.y = cabecaChuveiro.position.y - (cabecaGeometry.parameters.height / 2) - 0.25 + invertedDisplacement;
+
+  // Atualiza a posição do jato de água
+  jatoAgua1.position.y = cabecaChuveiro.position.y - (cabecaGeometry.parameters.height / 0.6) + 0.20 + invertedDisplacement;
+
+  // Repete a animação na próxima atualização de quadro
+  requestAnimationFrame(animateWaterJet);
+}
+
+// Inicia a animação do jato de água
+animateWaterJet();
 
 
 // Adiciona o chuveiro à cena
