@@ -158,7 +158,7 @@ class TuboReto extends THREE.Curve {
 }
 
 // Cria uma instância da nova curva de cano reto
-const tuboRetoCurve = new TuboReto(2); // Aumenta o tamanho do cano
+const tuboRetoCurve = new TuboReto(3); // Aumenta o tamanho do cano
 
 // Cria a geometria do cano reto
 const tuboRetoGeometry = new THREE.TubeGeometry(tuboRetoCurve, 64, 0.08, 16, false);
@@ -174,16 +174,19 @@ chuveiroGroup.add(tuboReto);
 const cabecaGeometry = new THREE.CylinderGeometry(0.3, 0.4, 0.7, 17);
 const cabecaMaterial = new THREE.MeshStandardMaterial({ color: 0xd3d3d3 });
 const cabecaChuveiro = new THREE.Mesh(cabecaGeometry, cabecaMaterial);
-cabecaChuveiro.position.copy(tuboRetoCurve.getPoint(1)); // Posiciona a cabeça do chuveiro na ponta do cano reto
-cabecaChuveiro.rotation.z = Math.PI / -6; // Inclinação de 45 graus
+
+
+/// Calcula a posição final do cano reto (ponta do cano)
+const endPoint = tuboRetoCurve.getPoint(1);
+
+// Posiciona a cabeça do chuveiro na ponta do cano
+cabecaChuveiro.position.copy(endPoint);
+
+// Rotaciona a cabeça do chuveiro para acompanhar a inclinação do cano
+cabecaChuveiro.rotation.x = tuboReto.rotation.x;
+
+// Adiciona a cabeça do chuveiro ao grupo do chuveiro
 chuveiroGroup.add(cabecaChuveiro);
-
-// Posiciona o cano reto saindo da cabeça do chuveiro até a borda da banheira
-const startPoint = tuboRetoCurve.getPoint(0); // Ponto inicial da curva
-const endPoint = tuboRetoCurve.getPoint(1);   // Ponto final da curva
-
-// Ajusta a posição do cano reto
-tuboReto.position.copy(startPoint); // Posiciona o cano reto na cabeça do chuveiro
 
 // Configuração da iluminação
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -196,7 +199,7 @@ scene.add(directionalLight);
 // Criação do jato de água 
 const jatoGeometry = new THREE.CylinderGeometry(0, 0.10, 0.8, 8); 
 const jatoMaterial = new THREE.MeshBasicMaterial({
-  color: 0x0000FF,
+  color: 0x66ccff,
   transparent: true,
   opacity: 0.8
 });
@@ -205,32 +208,36 @@ const jatoAgua = new THREE.Mesh(jatoGeometry, jatoMaterial);
 // Criação do jato de água 
 const jatoGeometry1 = new THREE.CylinderGeometry(0, 0.10, 0.8, 8); 
 const jatoMaterial1 = new THREE.MeshBasicMaterial({
-  color: 0x0000FF,
+  color: 0x66ccff,
   transparent: true,
   opacity: 0.8
 });
 const jatoAgua1 = new THREE.Mesh(jatoGeometry, jatoMaterial);
-
-// Posicionamento do jato de água no centro da cabeça do chuveiro
+ 
+// Posicionamento do jato de água no centro da cabeça do chuveiro 1
 jatoAgua.position.copy(cabecaChuveiro.position);
 jatoAgua.position.y -= cabecaGeometry.parameters.height / 2 + 0.25;
 chuveiroGroup.add(jatoAgua);
 
-// Posicionamento do jato de água no centro da cabeça do chuveiro
+// Posicionamento do jato de água no centro da cabeça do chuveiro 2
 jatoAgua1.position.copy(cabecaChuveiro.position);
 jatoAgua1.position.y -= cabecaGeometry.parameters.height / 0.6 + 0.20;
 chuveiroGroup.add(jatoAgua1);
 
 
 // Posiciona o chuveiro na borda da banheira
-const chuveiroX = 50 + radius * Math.cos(Math.PI * 0.25); // Calcula a posição x usando um ângulo de 45 graus
-const chuveiroY = 10 + radius + 0.1; // Coordenada y acima da borda da banheira
-const chuveiroZ = -20; // Mesma coordenada z da banheira
+const chuveiroX = 55;
+const chuveiroY = borderRadius + chuveiroGroup.scale.y + 2; // Ajuste a altura do chuveiro
+const chuveiroZ = 6;
 chuveiroGroup.position.set(chuveiroX, chuveiroY, chuveiroZ);
+
+// Rotação para inclinar o chuveiro para frente
+chuveiroGroup.rotation.y = Math.PI / 15;
 
 // Escala do chuveiro
 const chuveiroEscala = 8; // Aumenta a escala do chuveiro
 chuveiroGroup.scale.set(chuveiroEscala, chuveiroEscala, chuveiroEscala);
+
 
 // Adiciona o chuveiro à cena
 scene.add(chuveiroGroup);
