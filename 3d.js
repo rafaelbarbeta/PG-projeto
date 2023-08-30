@@ -86,7 +86,7 @@ duckGroup.add(leftEye, rightEye);
 // Adiciona os objetos à cena
 scene.add(duckGroup);
 duckGroup.scale.multiplyScalar(5);
-duckGroup.position.set(0, 2, -20);
+duckGroup.position.set(30, 12, -15);
 
 /* BANHEIRA */
 const banheira = new THREE.Group();
@@ -114,11 +114,6 @@ var cap = new THREE.Mesh(capGeom, capMaterial);
 hemiSphere.add(cap);
 hemiSphere.rotateX(Math.PI);
 hemiSphere.scale.x = 1.5;
-
-
-//apoios da banheira (pezinho)
-
-
 
 //borda
 var borderRadius = 5.3; // Raio da borda é ligeiramente maior que o raio da base
