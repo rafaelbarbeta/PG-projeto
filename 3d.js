@@ -91,20 +91,26 @@ duckGroup.position.set(0, 2, -20);
 /* BANHEIRA */
 const banheira = new THREE.Group();
 
-//base da banheira
 var radius = 5;
+
+//base da banheira
 var radialSegments = 32;
 var materialFora = new THREE.MeshBasicMaterial({
   color: 0x808080
 });
-var materialDentro = new THREE.MeshBasicMaterial({
-  color: 0x0000FF
+
+ const capMaterial = new THREE.ShaderMaterial({
+  vertexShader: document.getElementById('vertex-shader').textContent,
+  fragmentShader: document.getElementById('fragment-shader').textContent,
+  uniforms: {
+      radius: { value: radius }
+  }
 });
 var hemiSphereGeom = new THREE.SphereBufferGeometry(radius, radialSegments, Math.round(radialSegments / 4), 0, Math.PI * 2, 0, Math.PI * 0.5);
 var hemiSphere = new THREE.Mesh(hemiSphereGeom, materialFora);
 var capGeom = new THREE.CircleBufferGeometry(radius, radialSegments);
 capGeom.rotateX(Math.PI * 0.5);
-var cap = new THREE.Mesh(capGeom, materialDentro);
+var cap = new THREE.Mesh(capGeom, capMaterial);
 hemiSphere.add(cap);
 hemiSphere.rotateX(Math.PI);
 hemiSphere.scale.x = 1.5;
