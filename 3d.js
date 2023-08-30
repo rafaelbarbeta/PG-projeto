@@ -6,12 +6,11 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const cameraEstatica = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 var cameraAtual = 1;
-camera.position.set(0, 10, 10);
+camera.position.set(0, 20, 25);
 cameraEstatica.position.set(0, 70, 55);
 cameraEstatica.rotation.x = -Math.PI/5;
 
 var renderer = new THREE.WebGLRenderer();
-camera.position.z = 5;
 // adiciona um container para conter o canvas
 const container = document.createElement('div');
 container.style.width = '100%';
@@ -37,7 +36,6 @@ const floorMaterial = new THREE.MeshBasicMaterial({ map: floorTexture });
 const floor = new THREE.Mesh(floorGeometry, floorMaterial);
 floor.rotation.x = Math.PI / -2; // Rotação para posicionar horizontalmente
 scene.add(floor);
-
 
 // Cria um grupo para o patinho e define suas partes
 const duckGroup = new THREE.Group();
@@ -86,7 +84,7 @@ duckGroup.add(leftEye, rightEye);
 // Adiciona os objetos à cena
 scene.add(duckGroup);
 duckGroup.scale.multiplyScalar(5);
-duckGroup.position.set(0, 2, -20);
+duckGroup.position.set(0, 10, 1);
 
 /* BANHEIRA */
 const banheira = new THREE.Group();
@@ -115,7 +113,7 @@ hemiSphere.scale.x = 1.5;
 
 
 //borda
-var borderRadius = 5.3; // Raio da borda é ligeiramente maior que o raio da base
+var borderRadius = 5.6; // Raio da borda é ligeiramente maior que o raio da base
 var borderHeight = 0.3; // Altura da borda
 var borderSegments = 32;
 var borderMaterial = new THREE.MeshBasicMaterial({
@@ -132,7 +130,7 @@ banheira.add(border);
 banheira.add(hemiSphere);
 scene.add(banheira);
 banheira.scale.multiplyScalar(5);
-banheira.position.set(50, 10, -20);
+banheira.position.set(0, 10, 0);
 /* FIM BANHEIRA */
 
 
@@ -226,13 +224,13 @@ chuveiroGroup.add(jatoAgua1);
 
 
 // Posiciona o chuveiro na borda da banheira
-const chuveiroX = 55;
-const chuveiroY = borderRadius + chuveiroGroup.scale.y + 2; // Ajuste a altura do chuveiro
+const chuveiroX = 40;
+const chuveiroY = borderRadius + chuveiroGroup.scale.y + 3; // Ajuste a altura do chuveiro
 const chuveiroZ = 6;
 chuveiroGroup.position.set(chuveiroX, chuveiroY, chuveiroZ);
 
-// Rotação para inclinar o chuveiro para frente
-chuveiroGroup.rotation.y = Math.PI / 15;
+// Rotação para inclinar o chuveiro apontando para a banheira
+chuveiroGroup.rotation.y = Math.PI / 1.8;
 
 // Escala do chuveiro
 const chuveiroEscala = 8; // Aumenta a escala do chuveiro
@@ -290,7 +288,7 @@ corpoShampoo.position.set(0,4,0);
 shampooGroup.add(corpoShampoo);
 
 //muda posicao do shampoo
-shampooGroup.position.set(5,0,10);
+shampooGroup.position.set(-10,11,-26);
 
 //add shampoo na cena
 scene.add(shampooGroup);
