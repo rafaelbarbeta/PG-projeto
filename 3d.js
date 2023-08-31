@@ -99,35 +99,12 @@ var materialFora = new THREE.MeshBasicMaterial({
 });
 
  const capMaterial = new THREE.RawShaderMaterial({
-   vertexShader: `
-   varying vec2 vUv;
-   
-   void main() {
-     vUv = uv;
-     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-  `,
-  fragmentShader: `
-  uniform float radius;
-  varying vec2 vUv;
-
-  void main() {
-      // Calcule a distância do fragmento ao centro do círculo
-      float dist = length(vUv - 0.5);
-
-      // entre 0.0 e 1.0
-      float gradient = 1.5 - smoothstep(0.0, 0.5, dist);
-      
-      // Mix azul com preto
-      vec3 color = mix(vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 1.0), gradient);
-      
-      // Defina a cor final do fragmento
-      gl_FragColor = vec4(color, 1.0);
-    }
-    `,
-    uniforms: {
-        radius: { value: radius }
-    }
-  });
+  vertexShader: document.getElementById('vertex-shader').textContent,
+  fragmentShader: document.getElementById('fragment-shader').textContent,
+  uniforms: {
+      radius: { value: radius }
+  }
+});
 var hemiSphereGeom = new THREE.SphereBufferGeometry(radius, radialSegments, Math.round(radialSegments / 4), 0, Math.PI * 2, 0, Math.PI * 0.5);
 var hemiSphere = new THREE.Mesh(hemiSphereGeom, materialFora);
 var capGeom = new THREE.CircleBufferGeometry(radius, radialSegments);
