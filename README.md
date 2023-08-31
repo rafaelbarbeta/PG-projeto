@@ -16,7 +16,10 @@ Pressione "2" para entrar na câmera estática. Ela dá uma visão geral da cena
 
 ## OBJETOS IMPLEMENTADOS
 - Chão : Rafael Barbeta
+Retângulo esticado e no qual foi aplicado uma textura, que é uma imagem de um azulejo
 - Patinho de borracha : Rafael Barbeta
+Consite de duas esferas, uma para a cabeça do patinho e outra que foi alongada para sergir como corpo.
+O bico, é um cone cujo topo está "para dentro" da cbeça do patinho só sobrando a base visível, parecendo, assim, um bico. Os olhos são duas esferas e as asas dois cones. Foi definido um "grupo" no qual todas essas partes foram adicionadas, e o grupo, por fim, foi adicionado na cena, por cima da banheira 
 - Chuveiro : Ana Juvencio
 - Banheira : Beatriz Patrício
 - Shampoo : Carlos
@@ -30,5 +33,6 @@ Pressione "2" para entrar na câmera estática. Ela dá uma visão geral da cena
 
 ## Movimento de objeto.
 - Patinho de borracha rotacionando : Rafael Barbeta
+Simplesmente aplica-se uma pequena rotação ao grupo do patinho a cada frame gerado, fazendo com que ele rotacione na cena.
 - Gotas d'água : Ana Juvencio
 
