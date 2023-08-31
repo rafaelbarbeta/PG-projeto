@@ -9,6 +9,12 @@
 
 <!-- shader água da banheira -->
 <script type="x-shader/x-vertex" id="vertex-shader">
+  precision highp float;
+  uniform mat4 modelViewMatrix;
+  uniform mat4 projectionMatrix;
+  attribute vec3 position;
+  attribute vec2 uv;
+
   varying vec2 vUv;
 
   void main() {
@@ -18,6 +24,7 @@
 </script>
 
 <script type="x-shader/x-fragment" id="fragment-shader">
+  precision highp float;
   uniform float radius;
   varying vec2 vUv;
 

@@ -98,7 +98,7 @@ var materialFora = new THREE.MeshBasicMaterial({
   color: 0x808080
 });
 
- const capMaterial = new THREE.ShaderMaterial({
+ const capMaterial = new THREE.RawShaderMaterial({
   vertexShader: document.getElementById('vertex-shader').textContent,
   fragmentShader: document.getElementById('fragment-shader').textContent,
   uniforms: {

@@ -14,9 +14,6 @@ E : Para baixo
 Clique e segure com o botão esquerdo do mouse para habilitar rotação da câmera. Mova o mouse para visualizar a cena
 Pressione "2" para entrar na câmera estática. Ela dá uma visão geral da cena e nunca sai do lugar
 
-## Explicação das características implementadas
-
-
 ## OBJETOS IMPLEMENTADOS
 - Chão : Rafael Barbeta
 - Patinho de borracha : Rafael Barbeta
