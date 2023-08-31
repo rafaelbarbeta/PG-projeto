@@ -29,6 +29,10 @@ Para o corpo da banheira, foi utilizado metade de uma esfera alongada no eixo z.
 Para a borda foi utilizado um cilindro com um valor pequeno de altura, posicionado logo acima do corpo da banheira.
 Por fim, foi adicionado um círculo acima da borda, para simular a água dentro da banheira.
 - Shampoo : Carlos
+  A embalagem de shampoo foi construída utilizando dois objetos com a geometria de cilíndros:
+  Um cilíndro maior, de cor lilás, que representa o corpo da embalagem;
+  Um cilíndro menor, de cor dourada, que representa a tampa do shampoo.
+  A altura e área dos dois cilíndros foram ajustadas nos parâmetros do construtor. Os dois foram criados separadamente, então ajustei a posição deles para que a tampa ficasse logo acima do corpo. Assim, adicionei os dois objetos em um grupo, que por sua vez foi adicionado à cena e posicionado na borda da banheira.
 
 ## CÂMERAS:
 - Câmera rotátil : Rafael Barbeta
