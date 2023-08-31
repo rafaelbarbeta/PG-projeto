@@ -19,6 +19,10 @@ Pressione "2" para entrar na câmera estática. Ela dá uma visão geral da cena
 - Patinho de borracha : Rafael Barbeta
 - Chuveiro : Ana Juvencio
 - Banheira : Beatriz Patrício
+A banheira foi construída utilizando 3 objetos: 
+Para o corpo da banheira, foi utilizado metade de uma esfera alongada no eixo z.
+Para a borda foi utilizado um cilindro com um valor pequeno de altura, posicionado logo acima do corpo da banheira.
+Por fim, foi adicionado um círculo acima da borda, para simular a água dentro da banheira.
 - Shampoo : Carlos
 
 ## CÂMERAS:
@@ -26,7 +30,8 @@ Pressione "2" para entrar na câmera estática. Ela dá uma visão geral da cena
 - Câmera estática : Rafael Barbeta
 
 ## SHADER EM OBJETO
-- ?
+- Gradiente na água da banheira utilizando RawShaderMaterial:
+Foi utilizado a função mix para a interpolação das cores e o smoothstep para criar uma transição suave de cores entre o centro e a borda da circunferência. 
 
 ## Movimento de objeto.
 - Patinho de borracha rotacionando : Rafael Barbeta
