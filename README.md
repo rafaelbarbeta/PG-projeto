@@ -22,6 +22,10 @@ Consite de duas esferas, uma para a cabeça do patinho e outra que foi alongada 
 O bico, é um cone cujo topo está "para dentro" da cbeça do patinho só sobrando a base visível, parecendo, assim, um bico. Os olhos são duas esferas e as asas dois cones. Foi definido um "grupo" no qual todas essas partes foram adicionadas, e o grupo, por fim, foi adicionado na cena, por cima da banheira 
 - Chuveiro : Ana Juvencio
 - Banheira : Beatriz Patrício
+A banheira foi construída utilizando 3 objetos: 
+Para o corpo da banheira, foi utilizado metade de uma esfera alongada no eixo z.
+Para a borda foi utilizado um cilindro com um valor pequeno de altura, posicionado logo acima do corpo da banheira.
+Por fim, foi adicionado um círculo acima da borda, para simular a água dentro da banheira.
 - Shampoo : Carlos
 
 ## CÂMERAS:
@@ -29,7 +33,8 @@ O bico, é um cone cujo topo está "para dentro" da cbeça do patinho só sobran
 - Câmera estática : Rafael Barbeta
 
 ## SHADER EM OBJETO
-- ?
+- Gradiente na água da banheira utilizando RawShaderMaterial:
+Foi utilizado a função mix para a interpolação das cores e o smoothstep para criar uma transição suave de cores entre o centro e a borda da circunferência. 
 
 ## Movimento de objeto.
 - Patinho de borracha rotacionando : Rafael Barbeta
