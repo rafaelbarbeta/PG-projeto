@@ -1,5 +1,6 @@
 # PG-projeto
 Projeto de Processamento gráfico. Implementado em Javascript com ThreeJs
+Visite https://rafaelbarbeta.github.io/PG-projeto/ para ver o projeto em funcionamento!
 
 ## Descrição breve
 O projeto consiste na representação de uma banheira cartunesca, com um patinho de borracha,
