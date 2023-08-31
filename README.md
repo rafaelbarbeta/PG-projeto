@@ -42,4 +42,4 @@ Foi utilizado a função mix para a interpolação das cores e o smoothstep para
 - Patinho de borracha rotacionando : Rafael Barbeta
 Simplesmente aplica-se uma pequena rotação ao grupo do patinho a cada frame gerado, fazendo com que ele rotacione na cena.
 - Gotas d'água : Ana Juvencio
-
+Foi criado um função para dar um movimento vertical às geometrias que representam as gotas de água do chuveiro. É calculado o deslocamento vertical e definido a amplitude e velocidade de oscilação dos objetos, logo depois invertemos o deslocamento para que as gotas caiam de cima para baixo no quadro, porém quando é atualizado, o movimento se repete, fazendo com que a água volte para o chuveiro. 
