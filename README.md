@@ -20,8 +20,9 @@ Pressione "2" para entrar na câmera estática. Ela dá uma visão geral da cena
 Retângulo esticado e no qual foi aplicado uma textura, que é uma imagem de um azulejo
 - Patinho de borracha : Rafael Barbeta
 Consite de duas esferas, uma para a cabeça do patinho e outra que foi alongada para sergir como corpo.
-O bico, é um cone cujo topo está "para dentro" da cbeça do patinho só sobrando a base visível, parecendo, assim, um bico. Os olhos são duas esferas e as asas dois cones. Foi definido um "grupo" no qual todas essas partes foram adicionadas, e o grupo, por fim, foi adicionado na cena, por cima da banheira 
+O bico, é um cone cujo topo está "para dentro" da cabeça do patinho só sobrando a base visível, parecendo, assim, um bico. Os olhos são duas esferas e as asas dois cones. Foi definido um "grupo" no qual todas essas partes foram adicionadas, e o grupo, por fim, foi adicionado na cena, por cima da banheira 
 - Chuveiro : Ana Juvencio
+Na construção do chuveiro foi utilizado a geometria de um cilindro e de um tubo, onde o tubo é posicionado na cabeça do chuveiro (cilindro) e todos o chuveiro é posicionado na borda da banheira com uma pequena inclinação. São aplicadas algumas propriedades para deixar o chuveiro um pouco mais parecido com o "real". Além disso, foi adicionado duas formas geométricas para representar as gotas de água do chuveiro. 
 - Banheira : Beatriz Patrício
 A banheira foi construída utilizando 3 objetos: 
 Para o corpo da banheira, foi utilizado metade de uma esfera alongada no eixo z.

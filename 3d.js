@@ -176,15 +176,12 @@ const cabecaMaterial = new THREE.MeshStandardMaterial({ color: 0xd3d3d3 });
 const cabecaChuveiro = new THREE.Mesh(cabecaGeometry, cabecaMaterial);
 
 
-/// Calcula a posição final do cano reto (ponta do cano)
+// Calcula a posição final do cano reto (ponta do cano)
 const endPoint = tuboRetoCurve.getPoint(1);
-
 // Posiciona a cabeça do chuveiro na ponta do cano
 cabecaChuveiro.position.copy(endPoint);
-
 // Rotaciona a cabeça do chuveiro para acompanhar a inclinação do cano
 cabecaChuveiro.rotation.x = tuboReto.rotation.x;
-
 // Adiciona a cabeça do chuveiro ao grupo do chuveiro
 chuveiroGroup.add(cabecaChuveiro);
 
@@ -240,26 +237,20 @@ chuveiroGroup.scale.set(chuveiroEscala, chuveiroEscala, chuveiroEscala);
 
 // Função para animar o movimento do jato de água
 function animateWaterJet() {
-  // Define a amplitude e a velocidade da oscilação
-  const amplitude = -0.5;
+  const amplitude = -0.5; // Define a amplitude e a velocidade da oscilação
   const speed = 1;
 
   // Calcula o deslocamento vertical com base no tempo
   const displacement = amplitude * Math.sin(speed * Date.now() * 0.001);
-
-  //  o movimento começa de cima e caia para baixo
+  // O movimento começa de cima e cai para baixo
   const invertedDisplacement = -displacement;
-
   // Atualiza a posição do jato de água
   jatoAgua.position.y = cabecaChuveiro.position.y - (cabecaGeometry.parameters.height / 2) - 0.25 + invertedDisplacement;
-
   // Atualiza a posição do jato de água
   jatoAgua1.position.y = cabecaChuveiro.position.y - (cabecaGeometry.parameters.height / 0.6) + 0.20 + invertedDisplacement;
-
   // Repete a animação na próxima atualização de quadro
   requestAnimationFrame(animateWaterJet);
 }
-
 // Inicia a animação do jato de água
 animateWaterJet();
 
